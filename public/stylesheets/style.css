@@ -34,6 +34,20 @@ body{
   transform-style: preserve-3d;
 }
 
+.container .join{
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.container .join a {
+  border: none;
+  background-color: white;
+  text-decoration: none;
+  color: #3d2618;
+  font-size: 35px;
+}
+
  .container .cover .front,
  .container .cover .back{
   position: absolute;
