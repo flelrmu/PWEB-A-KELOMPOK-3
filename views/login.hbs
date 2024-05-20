@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title> Login </title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -27,11 +27,11 @@
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="E-mail" required>
+                <input type="text" name="email" placeholder="E-mail" id="email" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" id="password" required>
               </div>
               <div class="button input-box">
                 <input type="submit" value="Submit">
@@ -41,6 +41,9 @@
         </div>
       </div>
     </div>
+    {{#if message}}
+    <h4 class="alert alert-danger mt-4">{{message}}</h4>
+    {{/if}}
   </div>
 </body>
 
