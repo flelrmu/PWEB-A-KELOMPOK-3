@@ -1,7 +1,7 @@
 var express = require('express');
 const verifyToken = require('../middleware/tokenvalid.js');
 const { editProfile, getUser } = require('../controllers/auth.js');
-const changePassword = require('../controllers/auth.js');
+const { changePassword } = require('../controllers/auth.js');
 var router = express.Router();
 
 router.get('/', (req, res) => {
