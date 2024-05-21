@@ -28,10 +28,10 @@ const Login = async (req, res) => {
       const hp = user.hp;
       const departemen = user.departemen;
   
-      const token = jwt.sign({ userId, name, email,role,nim,hp,departemen }, process.env.ACCESS_TOKEN_SECRET, {
+      const token = jwt.sign({ userId, name, email, role, nim, hp, departemen }, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: "15m",
       });
-      const refreshToken = jwt.sign({ userId, name, email,role,nim,hp,departemen }, process.env.REFRESH_TOKEN_SECRET, {
+      const refreshToken = jwt.sign({ userId, name, email, role, nim, hp, departemen }, process.env.REFRESH_TOKEN_SECRET, {
         expiresIn: "7d",
       });
   
