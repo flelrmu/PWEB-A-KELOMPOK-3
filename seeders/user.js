@@ -10,7 +10,7 @@ module.exports = {
         {
           email: "2211523021_muhammad@student.unand.ac.id",
           name: "Farhan",
-          nim: "2211522020",
+          nim: "2211523021",
           password: await bcrypt.hash("farhan", 10),
           role: "mahasiswa",
           departemen: "Sistem Informasi",
