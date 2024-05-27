@@ -9,7 +9,7 @@ module.exports = {
       [
         {
           email: "2211523021_muhammad@student.unand.ac.id",
-          name: "Farhan",
+          name: "Muhammad Farhan",
           nim: "2211523021",
           password: await bcrypt.hash("farhan", 10),
           role: "mahasiswa",
@@ -37,6 +37,17 @@ module.exports = {
           role: "mahasiswa",
           departemen: "Sistem Informasi",
           hp: "082384639175",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          email: "1122277755_dosen@student.unand.ac.id ",
+          name: "I'm Dosen",
+          nim: "1122277755",
+          password: await bcrypt.hash("dosen", 10),
+          role: "dosen",
+          departemen: "Sistem Informasi",
+          hp: "082894139816",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

@@ -1,12 +1,12 @@
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");  //hashing dan memverifikasi kata sandi.
 const { Users } = require("../models/users.js");
 
-const Login = async (req, res) => {
+const Login = async (req, res) => {   //menangani autentikasi pengguna.(menangani HTTP request method)
   try {
-    const user = await Users.findOne({
+    const user = await Users.findOne({  //Mencari pengguna berdasarkan email.
       where: {
-        email: req.body.email,
+        email: req.body.email,           
       },
     });
 
@@ -14,7 +14,7 @@ const Login = async (req, res) => {
       throw new Error("Email tidak ditemukan");
     }
 
-    const match = await bcrypt.compare(req.body.password, user.password);
+    const match = await bcrypt.compare(req.body.password, user.password); //Memverifikasi kata sandi menggunakan bcrypt.
 
     if (!match) {
       throw new Error("Password salah");
@@ -28,14 +28,14 @@ const Login = async (req, res) => {
     const hp = user.hp;
     const departemen = user.departemen;
 
-    const token = jwt.sign(
+    const token = jwt.sign(              //Membuat token akses dan refresh token menggunakan jsonwebtoken.
       { userId, name, email, role, nim, hp, departemen },
       process.env.ACCESS_TOKEN_SECRET,
       {
         expiresIn: "15m",
       }
     );
-    const refreshToken = jwt.sign(
+    const refreshToken = jwt.sign(          //Memperbarui refresh token di database.
       { userId, name, email, role, nim, hp, departemen },
       process.env.REFRESH_TOKEN_SECRET,
       {
@@ -54,7 +54,7 @@ const Login = async (req, res) => {
       }
     );
 
-    res.cookie("refreshToken", refreshToken, {
+    res.cookie("refreshToken", refreshToken, {       //Mengatur cookie untuk token dan refresh token.
       httpOnly: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
       // secure:true
@@ -62,10 +62,12 @@ const Login = async (req, res) => {
 
     res.cookie("token", token, { httpOnly: true });
 
-    if (user.role === "mahasiswa") {
+    if (user.role === "mahasiswa") {           //Mengarahkan pengguna berdasarkan peran (role).
       return res.redirect("/home");
     } else if (user.role === "admin") {
       return res.redirect("/admin/dashboard");
+    }  else if (user.role === "dosen") {
+      return res.redirect("/dosen/dashboard");
     }
   } catch (error) {
     console.log(error);
@@ -111,12 +113,12 @@ const Logout = async (req, res) => {
   }
 };
 
-function checkLogin(req) {
+function checkUserLoggedIn(req) {     //untuk memeriksa status login pengguna.
   const refreshToken = req.cookies.refreshToken;
 
   let user = null;
 
-  if (refreshToken) {
+  if (refreshToken) {         //Memverifikasi refresh token dan mengembalikan data pengguna jika valid.
     try {
       const decoded = jwt.verify(
         refreshToken,
@@ -191,20 +193,20 @@ const editProfile = async (req, res) => {
   }
 };
 
-const getUser = async (req, res) => {
-  const { user } = checkLogin(req, res);
+const getUser = async (req, res) => {    //untuk mengambil data pengguna yang sedang login.
+  const { user } = checkUserLoggedIn(req, res);  //Memeriksa status login 
   if (!user) {
     return res.redirect("/login");
   }
-
-  const newProfile = await Users.findByPk(user.userId);
+                                                        
+  const newProfile = await Users.findByPk(user.userId);        //mengembalikan data profil pengguna.
 
   return newProfile;
 };
 
 module.exports = {
   Login,
-  checkLogin,
+  checkUserLoggedIn,
   Logout,
   getUser,
   editProfile,
