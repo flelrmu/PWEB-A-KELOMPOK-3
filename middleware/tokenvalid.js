@@ -6,61 +6,51 @@ function verifyToken(role) {
     const refreshToken = req.cookies.refreshToken;
 
     if (!refreshToken) {
-      console.log("Tidak ada token baru yang ditemukan, mengalihkan ke login");
-      return res.redirect("/");
+      console.log("No refresh token found, redirecting to login");
+      return res.redirect('/login');
     }
 
     if (!accessToken) {
-      console.log("Tidak ada token akses yang ditemukan, dialihkan ke login");
-      return res.redirect("/");
+      console.log("No access token found, redirecting to login");
+      return res.redirect('/login');
     }
 
     jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
       if (err) {
-        if (err.name === "TokenExpiredError") {
-          console.log("Token akses kedaluwarsa, memverifikasi token baru");
+        if (err.name === 'TokenExpiredError') {
+          console.log("Access token expired, verifying refresh token");
 
-          jwt.verify(
-            refreshToken,
-            process.env.REFRESH_TOKEN_SECRET,
-            (err, decodedRefresh) => {
-              if (err) {
-                console.log("Verifikasi token gagal:", err);
-                return res.redirect("/");
-              }
-
-              const newAccessToken = jwt.sign(
-                { userId: decodedRefresh.userId, role: decodedRefresh.role },
-                process.env.ACCESS_TOKEN_SECRET,
-                {
-                  expiresIn: "15m",
-                }
-              );
-
-              console.log("Token baru dibuat:", newAccessToken);
-
-              res.cookie("token", newAccessToken, {
-                httpOnly: true,
-                secure: true,
-              });
-
-              req.userId = decodedRefresh.userId;
-              req.userRole = decodedRefresh.role;
-
-              if (role && req.userRole !== role) {
-                if (req.userRole === "mahasiswa") {
-                  return res.redirect("/home");
-                } else if (req.userRole === "admin") {
-                  return res.redirect("/admin/dashboard");
-                }
-              }
-              return next();
+          jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decodedRefresh) => {
+            if (err) {
+              console.log("Refresh token verification failed:", err);
+              return res.redirect('/login');
             }
-          );
+
+            const newAccessToken = jwt.sign({ userId: decodedRefresh.userId, role: decodedRefresh.role }, process.env.ACCESS_TOKEN_SECRET, {
+              expiresIn: '15m'
+            });
+
+            console.log("New access token generated:", newAccessToken);
+
+            res.cookie('token', newAccessToken, { httpOnly: true, secure: true });
+
+            req.userId = decodedRefresh.userId;
+            req.userRole = decodedRefresh.role;
+
+            if (role && req.userRole !== role) {
+              if (req.userRole === "mahasiswa") {
+                return res.redirect("/home");
+              } else if (req.userRole === "admin") {
+                return res.redirect("/admin/dashboard");
+              } else if (req.userRole === "dosen") {
+                return res.redirect("/dosen/dashboard");
+              }
+            }
+            return next();
+          });
         } else {
-          console.log("Verifikasi token akses gagal:", err);
-          return res.status(403).json({ message: "Token tidak valid" });
-        }
+          console.log("Access token verification failed:", err);
+          return res.redirect('/login');        }
       } else {
         req.userId = decoded.userId;
         req.userRole = decoded.role;
@@ -70,6 +60,8 @@ function verifyToken(role) {
             return res.redirect("/home");
           } else if (req.userRole === "admin") {
             return res.redirect("/admin/dashboard");
+          } else if (req.userRole === "dosen") {
+            return res.redirect("/dosen/dashboard");
           }
         }
 
@@ -77,6 +69,6 @@ function verifyToken(role) {
       }
     });
   };
-}
+};
 
 module.exports = verifyToken;

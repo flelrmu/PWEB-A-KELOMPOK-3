@@ -23,9 +23,9 @@
               password</a>
             <a class="list-group-item list-group-item-action" href="/logout"
               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LogOut</a>
-            <form id="logout-form" action="/logout" method="POST" style="display: none;">
-              <input type="hidden" name="_method" value="DELETE">
-            </form>
+                                <form id="logout-form" action="/logout" method="DELETE" style="display: none;">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                </form>
             <a class="list-group-item list-group-item-action" href="/home">Back</a>
           </div>
         </div>
@@ -57,7 +57,7 @@
                   <input type="text" class="form-control" value="{{user.email}}" placeholder="Maria" disabled>
 
                   <div class="form-group">
-                    <label class="form-label">NIM</label>
+                    <label class="form-label">NIM/NIP</label>
                   </div>
                   <input type="text" class="form-control mb-1" value="{{user.nim}}" placeholder="Maria" disabled>
 
