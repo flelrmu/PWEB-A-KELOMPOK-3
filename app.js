@@ -14,6 +14,10 @@ const routeAdmin = require("./routes/admin.js");
 const routeDosen = require("./routes/dosen.js");
 const app = express();
 
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "hbs");
+
 const publicDirectory = path.join(__dirname, "./public");
 app.use(express.static(publicDirectory));
 
@@ -23,9 +27,6 @@ app.use(cookieParser());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "views"));
 
 app.use("/", routeIndex);
 app.use("/", routeUsers);
