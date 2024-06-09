@@ -17,6 +17,7 @@ router.get("/login", function (req, res, next) {
   res.render("login");
 });
 
+
 // Menggunakan fungsi Logout dari controllers/auth.js untuk menghapus sesi pengguna
 router.post("/logout", async (req, res, next) => {
   try {
