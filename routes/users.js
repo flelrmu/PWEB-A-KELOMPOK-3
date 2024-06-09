@@ -53,5 +53,15 @@ router.get("/daftar", verifyToken("mahasiswa"), async function (req, res) {
   res.render("mahasiswa/daftar", { user });
 });
 
+router.get("/lihat", verifyToken("mahasiswa"), async function (req, res) {
+  const user = await getUser(req, res);
+  res.render("mahasiswa/lihat", { user });
+});
+
+router.get("/editdaftar", verifyToken("mahasiswa"), async function (req, res) {
+  const user = await getUser(req, res);
+  res.render("mahasiswa/editdaftar", { user });
+});
+
 
 module.exports = router;
