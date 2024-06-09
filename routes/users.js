@@ -48,4 +48,10 @@ router.post("/editprofil", verifyToken("mahasiswa"), async (req, res) => {
   await editProfile(req, res);
 });
 
+router.get("/daftar", verifyToken("mahasiswa"), async function (req, res) {
+  const user = await getUser(req, res);
+  res.render("mahasiswa/daftar", { user });
+});
+
+
 module.exports = router;
