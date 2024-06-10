@@ -1,15 +1,11 @@
-var express = require("express");
-const verifyToken = require("../middleware/tokenValid.js");
-const { editProfile, getUser, changePassword } = require("../controllers/auth.js"); // Menggabungkan semua import dari auth.js
-var router = express.Router();
+// routes/admin.js
 
-router.get('/', (req, res) => {
-    res.redirect('/admin/dashboard');
-  });
-  
-  router.get("/dashboard", verifyToken('admin'), async (req, res) => {
-    const user = await getUser(req, res); 
-    res.render("admin/dashboard",{  user });
-  });
-  
-  module.exports = router;
+const express = require('express');
+const router = express.Router();
+
+// Route to render the dashboard view
+router.get('/dashboard', (req, res) => {
+    res.render('admin/dashboard');
+});
+
+module.exports = router;
