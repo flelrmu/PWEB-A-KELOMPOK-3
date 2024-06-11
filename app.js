@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const logger = require('morgan');
 const hbs = require('hbs');
+const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
@@ -21,6 +22,8 @@ app.set("view engine", "hbs");
 const publicDirectory = path.join(__dirname, "./public");
 app.use(express.static(publicDirectory));
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(cookieParser());
