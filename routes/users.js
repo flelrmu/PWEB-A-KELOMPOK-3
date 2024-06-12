@@ -2,6 +2,10 @@ var express = require("express");
 const verifyToken = require("../middleware/tokenValid.js");
 const { editProfile, getUser, changePassword } = require("../controllers/auth.js"); // Menggabungkan semua import dari auth.js
 var router = express.Router();
+const { sendForm } = require("../controllers/users.js");
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs/promises");
 
 // Rute untuk redirect ke login jika mengakses root
 router.get("/", (req, res) => {
@@ -53,6 +57,10 @@ router.get("/daftar", verifyToken("mahasiswa"), async function (req, res) {
   res.render("mahasiswa/daftar", { user });
 });
 
+router.post('/daftar', verifyToken('mahasiswa'), async (req, res) => {
+  await sendForm(req, res);
+})
+
 router.get("/lihat", verifyToken("mahasiswa"), async function (req, res) {
   const user = await getUser(req, res);
   res.render("mahasiswa/lihat", { user });
@@ -62,6 +70,8 @@ router.get("/editdaftar", verifyToken("mahasiswa"), async function (req, res) {
   const user = await getUser(req, res);
   res.render("mahasiswa/editdaftar", { user });
 });
+
+
 
 
 module.exports = router;

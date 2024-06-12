@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "db_semhas",
+    "database": "db_seminar",
     "host": "localhost",
     "dialect": "mysql"
   },
