@@ -71,6 +71,30 @@ router.get("/editdaftar", verifyToken("mahasiswa"), async function (req, res) {
   res.render("mahasiswa/editdaftar", { user });
 });
 
+router.get("/riwayat", verifyToken("mahasiswa"), async function (req, res) {
+  const user = await getUser(req, res);
+  res.render("mahasiswa/riwayat", { user });
+});
+
+router.get("/detailRiwayat", verifyToken("mahasiswa"), async function (req, res) {
+  const user = await getUser(req, res);
+  res.render("mahasiswa/detailRiwayat", { user });
+});
+
+router.get("/jadwal", verifyToken("mahasiswa"), async function (req, res) {
+  const user = await getUser(req, res);
+  res.render("mahasiswa/jadwal", { user });
+});
+
+router.get("/cari", verifyToken("mahasiswa"), async function (req, res) {
+  const user = await getUser(req, res);
+  res.render("mahasiswa/cari", { user });
+});
+
+
+
+
+
 
 
 

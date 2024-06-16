@@ -3,63 +3,84 @@
         margin: 0;
         background-color: #ffffff;
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
         height: 100vh;
-        padding-left: 50px;
-        padding-top: 30px;
-        padding-right: 30px;
     }
 
     .container-1 {
         text-align: center;
     }
 
-    h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-        padding-top: 50px;
-    }
-
     .form-container {
         display: inline-block;
         text-align: left;
+        border: 1px solid #ccc;
         padding: 20px;
-        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-        width: 500px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
     }
 
-    .form-list {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+    .form-1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .form-list li {
+    label {
+        font-size: 18px;
         margin-bottom: 10px;
     }
 
-    .form-list .action-item {
+    .input-group {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        position: relative;
     }
 
-    .form-list .action-item a {
-        color: #000000;
-        font-size: 14px;
+    input[type="date"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 200px;
     }
 
-    .form-list .action-item a:hover {
-        background-color: #3d2618;
+    .input-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .input-icon .fa-calendar {
+        font-size: 18px;
+        color: #aaa;
+    }
+
+    .submit-btn {
+        background-color: #5C4033;
         color: #fff;
         border: none;
-        border-radius: 10px;
-        padding: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        transition: 0.5s;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        background-color: #4B3028;
     }
 </style>
+
+
+
+
+
+
+
+
 
 <header class="header_section">
     <div class="container">
@@ -68,14 +89,12 @@
             <div class="navbar-center">
                 <form class="search-form">
                     <input type="text" placeholder="CARI SEMINAR HASIL..." class="search-input">
-                    <button type="submit" class="search-button">
-                        <i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                                <path
-                                    d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z">
-                                </path>
-                            </svg></i>
-                    </button>
+                    <a href="/cari"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -4 28 24"
+                            style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                            <path
+                                d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z">
+                            </path>
+                        </svg></a>
                 </form>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -93,7 +112,7 @@
                                     class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/profile">Settings</a></li>
-                            <li><a href="/riwayat">Riwayat</a></li>
+                            <li><a href="">Riwayat</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -117,22 +136,19 @@
     </div>
 </header>
 
-<div class="container-1">
-    <h1>Pendaftaran Seminar Hasil Anda</h1>
-    <section>
+<section>
+    <div class="container-1">
         <div class="form-container">
-            <ul class="form-list">
-                <li>
-                Nama <br>
-                NIM <br>
-                Judul <br>
-                Dosen Pembimbing <br>
-                </li> <br>
-                <li class="action-item">
-                    <a href="/editdaftar">Edit</a>
-                    <a href="/jadwal">Jadwal</a>
-                </li>
-            </ul>
+            <form class="form-1" action="/submit-jadwal" method="POST">
+                <label for="jadwal">Pilih Jadwal</label>
+                <div class="input-group">
+                    <input type="date" id="jadwal" name="jadwal" required>
+                    <span class="input-icon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
         </div>
-    </section>
-</div>
+    </div>
+</section>

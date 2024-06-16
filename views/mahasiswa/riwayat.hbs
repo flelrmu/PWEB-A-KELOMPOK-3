@@ -41,7 +41,7 @@
 
     .form-list .action-item {
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
     }
 
     .form-list .action-item a {
@@ -50,14 +50,8 @@
     }
 
     .form-list .action-item a:hover {
-        background-color: #3d2618;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        padding: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        transition: 0.5s;
+        transform: translateX(10px);
+        transition: all 0.3s ease-in-out 0.1s;
     }
 </style>
 
@@ -118,19 +112,21 @@
 </header>
 
 <div class="container-1">
-    <h1>Pendaftaran Seminar Hasil Anda</h1>
+    <h1>Riwayat Seminar Hasil Anda</h1>
     <section>
         <div class="form-container">
             <ul class="form-list">
                 <li>
-                Nama <br>
-                NIM <br>
-                Judul <br>
-                Dosen Pembimbing <br>
+                    Nama <br>
+                    NIM <br>
+                    Judul <br>
+                    Dosen Pembimbing <br>
                 </li> <br>
                 <li class="action-item">
-                    <a href="/editdaftar">Edit</a>
-                    <a href="/jadwal">Jadwal</a>
+                    <a href="/detailRiwayat">Details <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                            <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+                        </svg></a>
                 </li>
             </ul>
         </div>

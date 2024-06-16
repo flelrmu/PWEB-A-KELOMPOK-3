@@ -3,12 +3,9 @@
         margin: 0;
         background-color: #ffffff;
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
         height: 100vh;
-        padding-left: 50px;
-        padding-top: 30px;
-        padding-right: 30px;
     }
 
     .container-1 {
@@ -18,48 +15,56 @@
     h1 {
         font-size: 24px;
         margin-bottom: 20px;
-        padding-top: 50px;
     }
 
-    .form-container {
+    .detail-container {
         display: inline-block;
         text-align: left;
+        border: 1px solid #ccc;
         padding: 20px;
-        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-        width: 500px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 800px;
     }
 
-    .form-list {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+    p {
+        font-size: 16px;
+        margin: 10px 0;
     }
 
-    .form-list li {
-        margin-bottom: 10px;
+    ol {
+        margin: 10px 0;
+        padding-left: 20px;
     }
 
-    .form-list .action-item {
+    .button-group {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+        margin-top: 20px;
     }
 
-    .form-list .action-item a {
-        color: #000000;
-        font-size: 14px;
+    .evaluasi {
+        justify-content: left;
     }
 
-    .form-list .action-item a:hover {
-        background-color: #3d2618;
+    .btn {
+        background-color: #5C4033;
         color: #fff;
         border: none;
-        border-radius: 10px;
-        padding: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        transition: 0.5s;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background-color: #4B3028;
     }
 </style>
+
+
+
 
 <header class="header_section">
     <div class="container">
@@ -93,7 +98,7 @@
                                     class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/profile">Settings</a></li>
-                            <li><a href="/riwayat">Riwayat</a></li>
+                            <li><a href="">Riwayat</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -117,22 +122,29 @@
     </div>
 </header>
 
-<div class="container-1">
-    <h1>Pendaftaran Seminar Hasil Anda</h1>
-    <section>
-        <div class="form-container">
-            <ul class="form-list">
-                <li>
-                Nama <br>
-                NIM <br>
-                Judul <br>
-                Dosen Pembimbing <br>
-                </li> <br>
-                <li class="action-item">
-                    <a href="/editdaftar">Edit</a>
-                    <a href="/jadwal">Jadwal</a>
-                </li>
-            </ul>
+<section>
+    <div class="container-1">
+        <h1>Detail Seminar Hasil</h1>
+        <div class="detail-container">
+            <p>Nama Mahasiswa : {{namaMahasiswa}}</p>
+            <p>Nim Mahasiswa : {{nimMahasiswa}}</p>
+            <p>Topik Seminar Hasil : {{topikSeminar}}</p>
+            <p>Judul : {{judul}}</p>
+            <p>Dosen Pembimbing : {{dosenPembimbing}}</p>
+            <p>Dosen Penguji :</p>
+            <ol>
+                <li>{{dosenPenguji1}}</li>
+                <li>{{dosenPenguji2}}</li>
+            </ol>
+            <p>Tanggal Pengajuan Seminar Hasil : {{tanggalPengajuan}}</p>
+            <p>Tanggal Sidang Seminar Hasil : {{tanggalSidang}}</p>
+
+            <div class="button-group evaluasi">
+                <a href="/evaluasi" class="btn">Evaluasi</a>
+            </div>
         </div>
-    </section>
-</div>
+        <div class="button-group">
+            <a href="/riwayat" class="btn">Back</a>
+        </div>
+    </div>
+</section>
