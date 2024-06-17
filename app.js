@@ -19,9 +19,8 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
-const publicDirectory = path.join(__dirname, "./public");
-app.use(express.static(publicDirectory));
-
+app.use(express.static(path.join(__dirname, 'public')));
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
