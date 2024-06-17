@@ -103,25 +103,26 @@
 
 <body>
     <div class="container">
-        <h1>Pendaftaran Seminar Hasil</h1>
-        <form method="POST" action="/editdaftar">
+        <h1>Edit Pendaftaran Seminar</h1>
+        <form action="/editdaftar/{{idDaftar}}" method="POST" enctype="multipart/form-data">
             <label for="nama">Nama</label>
-            <input class="daftar" type="text" id="nama" name="inputNama" required>
+            <input class="daftar" type="text" id="nama" name="inputNama" value="{{daftar.name}}" required>
 
             <label for="nim">NIM</label>
-            <input class="daftar" type="text" id="nim" name="inputNim" required>
+            <input class="daftar" type="text" id="nim" name="inputNim" value="{{daftar.nim}}" required>
 
             <label for="topik">Topik</label>
-            <input class="daftar" type="text" id="topik" name="inputTopik" required>
+            <input class="daftar" type="text" id="topik" name="inputTopik" value="{{daftar.topik}}" required>
 
             <label for="judul">Judul</label>
-            <input class="daftar" type="text" id="judul" name="inputJudul" required>
+            <input class="daftar" type="text" id="judul" name="inputJudul" value="{{daftar.judul}}" required>
 
             <label for="dosen">Dosen Pembimbing</label>
-            <input class="daftar" type="text" id="dosen" name="inputDospem" required>
+            <input class="daftar" type="text" id="dosen" name="inputDospem" value="{{daftar.dosenPembimbing}}" required>
 
             <label for="file">Upload File Presentasi</label>
-            <input class="daftar" type="file" id="file" name="file" required>
+            <input class="daftar" type="file" id="file" name="file">
+            <p>File saat ini: <a href="/{{daftar.file}}" target="_blank">Lihat File</a></p>
 
             <div class="buttons">
                 <button type="submit" class="submit-btn">Save</button>
@@ -130,5 +131,6 @@
         </form>
     </div>
 </body>
+
 
 </html>
