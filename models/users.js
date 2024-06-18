@@ -36,6 +36,10 @@ const Users = db.define(
   }
 );
 
+Users.associate = function (models) {
+  Users.hasMany(models.Daftar, { foreignKey: 'id' });
+};
+
 module.exports = {
   Users,
 };

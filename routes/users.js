@@ -3,7 +3,6 @@ const verifyToken = require("../middleware/tokenValid.js");
 const { editProfile, getUser, changePassword } = require("../controllers/auth.js"); // Menggabungkan semua import dari auth.js
 var router = express.Router();
 const users = require('../controllers/users.js');
-const { sendForm, editDaftar } = require("../controllers/users.js");
 const upload = require('../middleware/upload');
 const { Daftar } = require("../models/pendaftaran.js");
 

@@ -9,7 +9,7 @@ exports.sendForm = async (req, res) => {
   try {
     const { inputNama, inputNim, inputTopik, inputJudul, inputDospem } = req.body;
     const filePath = req.file.path;
-
+    const userId = req.user.id;
     const newForm = await Daftar.create({
       name: inputNama,
       nim: inputNim,
@@ -17,6 +17,7 @@ exports.sendForm = async (req, res) => {
       judul: inputJudul,
       dosenPembimbing: inputDospem,
       file: filePath,
+      id: userId
     });
 
     return res.redirect("/lihat/" + newForm.idDaftar);
@@ -37,6 +38,8 @@ exports.editDaftar = async (req, res) => {
 
     const filePath = req.file ? req.file.path : daftar.file;
 
+    const userId = req.user.id;
+
     await daftar.update({
       name: inputNama,
       nim: inputNim,
@@ -44,6 +47,7 @@ exports.editDaftar = async (req, res) => {
       judul: inputJudul,
       dosenPembimbing: inputDospem,
       file: filePath,
+      id: userId
     });
 
     return res.redirect("/lihat/" + daftar.idDaftar);
