@@ -29,11 +29,23 @@ const Daftar = db.define(
     file: {
       type: DataTypes.STRING,
     },
+    id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users', // Nama tabel yang dirujuk
+        key: 'id',
+      },
+    },
   },
   {
     freezeTableName: true,
   }
 );
+
+// Menambahkan asosiasi
+Daftar.associate = function (models) {
+  Daftar.belongsTo(models.Users, { foreignKey: 'id' });
+};
 
 module.exports = {
   Daftar,
