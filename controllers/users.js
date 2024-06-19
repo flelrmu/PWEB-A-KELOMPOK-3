@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { Users } = require("../models/users.js");
+const { Jadwal } = require("../models/jadwal.js");
 const { Daftar } = require("../models/pendaftaran.js");
 const path = require('path');
 const fs = require('fs');
@@ -23,7 +24,7 @@ exports.sendForm = async (req, res) => {
     return res.redirect("/lihat/" + newForm.idDaftar);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Terjadi kesalahan server" });
+    return res.status(500).json({ message: "Pendaftaran Sudah dilakukan, Menunggu Verifikasi Dari Dosen" });
   }
 };
 
@@ -93,5 +94,32 @@ exports.editForm = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send('Terjadi kesalahan server');
+  }
+};
+
+exports.submitJadwal = async (req, res) => {
+  try {
+      const { jadwal } = req.body;
+      const userId = req.user.id; // Pastikan req.user.id terisi
+
+      if (!userId) {
+          return res.status(400).send('User ID is required');
+      }
+
+      const daftar = await Daftar.findOne({ where: { id: userId } });
+
+      if (!daftar) {
+          return res.status(404).send('Daftar tidak ditemukan');
+      }
+
+      await Jadwal.create({
+          tanggal: jadwal,
+          idDaftar: daftar.idDaftar,
+      });
+
+      res.redirect('/lihat/' + daftar.idDaftar); // Redirect ke halaman yang sesuai
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Terjadi kesalahan server');
   }
 };

@@ -10,6 +10,7 @@ db.sequelize = sequelize;
 
 db.Users = require("./users.js")(sequelize, Sequelize.DataTypes);
 db.Daftar = require("./pendaftaran.js")(sequelize, Sequelize.DataTypes);
+db.Jadwal = require("./jadwal.js")(sequelize, Sequelize.DataTypes); 
 
 // Panggil method associate untuk menghubungkan asosiasi
 Object.keys(db).forEach((modelName) => {

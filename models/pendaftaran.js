@@ -47,6 +47,10 @@ Daftar.associate = function (models) {
   Daftar.belongsTo(models.Users, { foreignKey: 'id' });
 };
 
+Daftar.associate = function(models) {
+  Daftar.hasMany(models.Jadwal, { foreignKey: 'idDaftar' });
+};
+
 module.exports = {
   Daftar,
 };
