@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Seminar Hasil</title>
+    <!-- ======= Custom Styles ====== -->
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <!-- ======= TailwindCSS and DaisyUI ====== -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.3/dist/full.css" rel="stylesheet">
+</head>
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container1">
+        <div class="navigation1">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="logo-apple"></ion-icon>
+                        </span>
+                        <span class="title text-lg">Seminar Hasil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/dashboard">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title text-lg">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/jadwal">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title text-lg">Jadwal</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/pendaftaran">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </span>
+                        <span class="title text-lg">Pendaftaran</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/daftarhadir">
+                        <span class="icon">
+                            <ion-icon name="help-outline"></ion-icon>
+                        </span>
+                        <span class="title text-lg">Daftar Hadir</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title text-lg">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/login">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title text-lg">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <div class="user">
+                    <img src="/images/profile.jpg" alt="">
+                </div>
+            </div>
+            <!-- ================ Pendaftaran Section ================= -->
+            <div class="details mt-20" id="pendaftaran-section">
+                <h1 class="text-5xl font-semibold mb-8">Pendaftaran Seminar Hasil</h1>
+                <!-- Tabel Daftar Hadir Peserta -->
+                <div class="container mx-auto">
+                    <div class="overflow-x-auto">
+                        <table class="table w-full bg-gray-100">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="text-center">Nama</th>
+                                    <th class="text-center">NIM/NIP</th>
+                                    <th class="text-center">Tanggal</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">Farhan</td>
+                                    <td class="text-center">12345678</td>
+                                    <td class="text-center">2024-06-20</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline btn-info btn-xs mr-2">
+                                            <ion-icon name="create-outline"></ion-icon>
+                                        </button>
+                                        <button class="btn btn-outline btn-error btn-xs">
+                                            <ion-icon name="trash-outline"></ion-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Ara</td>
+                                    <td class="text-center">87654321</td>
+                                    <td class="text-center">2024-06-21</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline btn-info btn-xs mr-2">
+                                            <ion-icon name="create-outline"></ion-icon>
+                                        </button>
+                                        <button class="btn btn-outline btn-error btn-xs">
+                                            <ion-icon name="trash-outline"></ion-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- =========== Scripts =========  -->
+    <script src="/js/scripts.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
