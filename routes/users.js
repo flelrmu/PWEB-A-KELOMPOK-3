@@ -75,6 +75,8 @@ router.get("/jadwal", verifyToken("mahasiswa"), async function (req, res) {
   res.render("mahasiswa/jadwal", { user });
 });
 
+router.post('/submit-jadwal', verifyToken("mahasiswa"), users.submitJadwal);
+
 // Rute untuk cari
 router.get("/cari", verifyToken("mahasiswa"), async function (req, res) {
   const user = await getUser(req, res);
