@@ -58,22 +58,28 @@ router.get("/editdaftar/:idDaftar", verifyToken("mahasiswa"), users.editForm);
 
 router.post("/editdaftar/:idDaftar", verifyToken("mahasiswa"), upload.single('file'), users.editDaftar);
 
-router.get("/riwayat", verifyToken("mahasiswa"), async function (req, res) {
-  const user = await getUser(req, res);
-  res.render("mahasiswa/riwayat", { user });
-});
+// router.get("/riwayat", verifyToken("mahasiswa"), async function (req, res) {
+//   const user = await getUser(req, res);
+//   res.render("mahasiswa/riwayat", { user });
+// });
 
-// Rute untuk detail riwayat
-router.get("/detailRiwayat", verifyToken("mahasiswa"), async function (req, res) {
-  const user = await getUser(req, res);
-  res.render("mahasiswa/detailRiwayat", { user });
-});
+// // Rute untuk detail riwayat
+// router.get("/detailRiwayat", users.getRiwayatSeminar, verifyToken("mahasiswa"), async function (req, res) {
+//   const user = await getUser(req, res);
+//   res.render("mahasiswa/detailRiwayat", { user });
+// });
+
+router.get("/riwayat/:idDaftar", verifyToken("mahasiswa"), users.getRiwayatSeminar);
+
+router.get("/detailRiwayat/:idDaftar", verifyToken("mahasiswa"), users.getDetailRiwayatSeminar);
 
 // Rute untuk jadwal
 router.get("/jadwal", verifyToken("mahasiswa"), async function (req, res) {
   const user = await getUser(req, res);
   res.render("mahasiswa/jadwal", { user });
 });
+
+router.post('/submit-jadwal', verifyToken("mahasiswa"), users.submitJadwal);
 
 // Rute untuk cari
 router.get("/cari", verifyToken("mahasiswa"), async function (req, res) {

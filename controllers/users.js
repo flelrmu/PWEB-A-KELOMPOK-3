@@ -1,7 +1,11 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { Users } = require("../models/users.js");
+const { Jadwal } = require("../models/jadwal.js");
 const { Daftar } = require("../models/pendaftaran.js");
+const { DetailRiwayatSeminar } = require("../models/DetailRiwayatSeminar.js");
+const { DosenPenguji } = require('../models/DosenPenguji');
+const { Op } = require('sequelize');
 const path = require('path');
 const fs = require('fs');
 
@@ -23,7 +27,7 @@ exports.sendForm = async (req, res) => {
     return res.redirect("/lihat/" + newForm.idDaftar);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Terjadi kesalahan server" });
+    return res.status(500).json({ message: "Pendaftaran Sudah dilakukan, Menunggu Verifikasi Dari Dosen" });
   }
 };
 
@@ -90,6 +94,94 @@ exports.editForm = async (req, res) => {
       return res.status(404).json({ message: "Pendaftaran tidak ditemukan" });
     }
     res.render("mahasiswa/editdaftar", { daftar, idDaftar: req.params.idDaftar });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Terjadi kesalahan server');
+  }
+};
+
+exports.submitJadwal = async (req, res) => {
+  try {
+      const { jadwal } = req.body;
+      const userId = req.user.id; // Pastikan req.user.id terisi
+
+      if (!userId) {
+          return res.status(400).send('User ID is required');
+      }
+
+      const daftar = await Daftar.findOne({ where: { id: userId } });
+
+      if (!daftar) {
+          return res.status(404).send('Daftar tidak ditemukan');
+      }
+
+      await Jadwal.create({
+          tanggal: jadwal,
+          idDaftar: daftar.idDaftar,
+      });
+
+      res.redirect('/riwayat/' + daftar.idDaftar); // Redirect ke halaman yang sesuai
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Terjadi kesalahan server');
+  }
+};
+
+exports.getRiwayatSeminar = async (req, res) => {
+  try {
+    const riwayat = await Daftar.findByPk(req.params.idDaftar, {
+      where: {
+        status: {
+          [Op.or]: ['selesai', 'ditunda']
+        }
+      },
+    });
+
+    if (!riwayat) {
+      return res.status(404).send('Riwayat tidak ditemukan');
+    }
+
+    res.render('mahasiswa/riwayat', {
+      idDaftar: riwayat.idDaftar,
+      namaMahasiswa: riwayat.name,
+      nimMahasiswa: riwayat.nim,
+      topikSeminar: riwayat.topik,
+      judul: riwayat.judul,
+      dosenPembimbing: riwayat.dosenPembimbing,
+      dosenPenguji: riwayat.nama,
+      status: riwayat.status,
+      tanggal: riwayat.tanggal
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Terjadi kesalahan server');
+  }
+};
+
+exports.getDetailRiwayatSeminar = async (req, res) => {
+  try {
+    const detailRiwayat = await Daftar.findByPk(req.params.idDaftar, {
+      include: [
+        { model: Jadwal, as: 'Jadwal', attributes: ['tanggal'] },
+      ],
+    });
+
+    if (!detailRiwayat) {
+      return res.status(404).send('Detail riwayat tidak ditemukan');
+    }
+
+    res.render('mahasiswa/detailRiwayat', {
+      idDaftar: detailRiwayat.idDaftar,
+      namaMahasiswa: detailRiwayat.name,
+      nimMahasiswa: detailRiwayat.nim,
+      topikSeminar: detailRiwayat.topik,
+      judul: detailRiwayat.judul,
+      dosenPembimbing: detailRiwayat.dosenPembimbing,
+      dosenPenguji: detailRiwayat.nama,
+      status: detailRiwayat.status,
+      tanggal: detailRiwayat.tanggal,
+      hasil: detailRiwayat.hasil
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send('Terjadi kesalahan server');
