@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { Sequelize } = require("sequelize");
 const db = require("../config/db.js");
 
@@ -53,3 +54,21 @@ Daftar.associate = function (models) {
 module.exports = {
   Daftar,
 };
+=======
+const { Sequelize, DataTypes } = require('sequelize');
+const db = require('../config/db.js');
+
+const Pendaftar = db.define('Pendaftar', {
+    idDaftar: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    // Define other fields as needed
+}, {
+    tableName: 'daftar',
+    timestamps: false,
+});
+
+module.exports = Pendaftar;
+>>>>>>> 7d9e033 (update dashboard admin)

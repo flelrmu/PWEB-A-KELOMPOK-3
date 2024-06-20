@@ -208,13 +208,20 @@ h1 {
   height: 290px;
   border-radius: 20px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items to the top */
-  padding-top: 20px; /* Adjust the top padding as needed */
+  flex-direction: column;
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
   color: white;
   font-size: 20px;
   font-weight: bold;
   margin: 20px 0; /* Increase margin to create more space between boxes */
+  text-align: center; /* Center text horizontally */
+}
+
+.box #count {
+  font-size: 120px; /* Increase font size for the count */
+  font-weight: bold; /* Bold font weight for the count */
+  margin-top: 20px; /* Margin to separate count from the text above */
 }
 
 /* dashboard.css */

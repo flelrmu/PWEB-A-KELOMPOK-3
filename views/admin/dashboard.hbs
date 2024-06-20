@@ -5,11 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DASHBOARD ADMIN</title>
-    <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body>
-    <!-- =============== Navigation ================ -->
     <div class="container1">
         <div class="navigation1">
             <ul>
@@ -71,7 +69,6 @@
                 </li>
             </ul>
         </div>
-        <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
@@ -81,21 +78,22 @@
                     <img src="/images/profile.jpg" alt="">
                 </div>
             </div>
-            <!-- ================ Dashboard Section ================= -->
             <div class="details" id="dashboard-section">
                 <h1>Dashboard</h1>
                 <div class="pendaftar">
-                    <div class="box">Pendaftar Seminar Hasil</div>
-                    <div class="box">Permintaan Perubahan Jadwal</div>
+                    <div class="box" id="pendaftar-box">
+                    <div>Pendaftar Seminar Hasil</div>
+                    <div id="count">{{count}}</div>
+                    </div>
+                    <div class="box" id="pendaftar-box">
+                    <div>Permintaan Perubahan Jadwal</div>
+                    <div id="count">{{count}}</div>
                 </div>
             </div>
-            <!-- Elemen div kosong untuk memuat konten jadwal -->
             <div id="content"></div>
         </div>
     </div>
-    <!-- =========== Scripts =========  -->
     <script src="/js/scripts.js"></script>
-    <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
