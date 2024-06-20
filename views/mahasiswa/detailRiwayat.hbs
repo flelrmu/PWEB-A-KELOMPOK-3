@@ -126,25 +126,28 @@
     <div class="container-1">
         <h1>Detail Seminar Hasil</h1>
         <div class="detail-container">
-            <p>Nama Mahasiswa : {{namaMahasiswa}}</p>
-            <p>Nim Mahasiswa : {{nimMahasiswa}}</p>
+            <p>Nama Mahasiswa :  {{namaMahasiswa}}</p>
+            <p>Nim Mahasiswa :  {{nimMahasiswa}}</p>
             <p>Topik Seminar Hasil : {{topikSeminar}}</p>
-            <p>Judul : {{judul}}</p>
-            <p>Dosen Pembimbing : {{dosenPembimbing}}</p>
+            <p>Judul : {{judul}} </p>
+            <p>Dosen Pembimbing :  {{dosenPembimbing}}</p>
             <p>Dosen Penguji :</p>
             <ol>
-                <li>{{dosenPenguji1}}</li>
-                <li>{{dosenPenguji2}}</li>
+                {{#if dosenPenguji.[0]}}
+                <li>{{dosenPenguji.[0].nama}}</li>
+                {{/if}}
+                {{#if dosenPenguji.[1]}}
+                <li>{{dosenPenguji.[1].nama}}</li>
+                {{/if}}
             </ol>
-            <p>Tanggal Pengajuan Seminar Hasil : {{tanggalPengajuan}}</p>
-            <p>Tanggal Sidang Seminar Hasil : {{tanggalSidang}}</p>
+            <p>Tanggal Sidang Seminar Hasil : {{tanggal}}</p>
 
             <div class="button-group evaluasi">
                 <a href="/evaluasi" class="btn">Evaluasi</a>
             </div>
         </div>
         <div class="button-group">
-            <a href="/riwayat" class="btn">Back</a>
+            <a href="/riwayat/{{idDaftar}}" class="btn">Back</a>
         </div>
     </div>
 </section>

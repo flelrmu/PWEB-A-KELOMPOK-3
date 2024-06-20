@@ -39,16 +39,15 @@ const Daftar = db.define(
   },
   {
     freezeTableName: true,
+    timestamps: false
   }
 );
 
 // Menambahkan asosiasi
 Daftar.associate = function (models) {
   Daftar.belongsTo(models.Users, { foreignKey: 'id' });
-};
-
-Daftar.associate = function(models) {
   Daftar.hasMany(models.Jadwal, { foreignKey: 'idDaftar' });
+  Daftar.hasMany(models.DetailRiwayatSeminar, { foreignKey: 'idDaftar' });
 };
 
 module.exports = {
