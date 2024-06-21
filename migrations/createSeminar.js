@@ -1,13 +1,13 @@
 "use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("detailRiwayatSeminar", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable("Seminar", {
+      idSeminar: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
       },
       namaMahasiswa: {
         type: Sequelize.STRING,
@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      judul: {
+      judulSeminar: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -29,27 +29,26 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      tanggalDaftar: {
-        type: Sequelize.DATE,
+      dosenPenguji1: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      tanggalSidang: {
-        type: Sequelize.DATE,
+      dosenPenguji2: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      createdAt: {
+      status: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
-      updatedAt: {
-        allowNull: false,
+      tanggal: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        allowNull: false,
       },
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("detailRiwayatSeminar");
+
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable("Seminar");
   },
 };
