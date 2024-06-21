@@ -1,15 +1,16 @@
-var express = require("express");
-const verifyToken = require("../middleware/tokenValid.js");
-const { editProfile, getUser, changePassword } = require("../controllers/auth.js"); // Menggabungkan semua import dari auth.js
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const adminController = require('../controllers/admin');
 
-router.get('/', (req, res) => {
-    res.redirect('/admin/dashboard');
-  });
-  
-  router.get("/dashboard", verifyToken('admin'), async (req, res) => {
-    const user = await getUser(req, res); 
-    res.render("admin/dashboard",{  user });
-  });
-  
-  module.exports = router;
+router.get('/dashboard', adminController.dashboard);
+router.get('/pendaftaran', adminController.pendaftaranSeminar);
+
+router.get('/jadwal', (req, res) => {
+    res.render('admin/jadwal');
+});
+
+router.get('/daftarhadir', (req, res) => {
+    res.render('admin/daftarhadir');
+});
+
+module.exports = router;
