@@ -5,14 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendaftaran Seminar Hasil</title>
-    <!-- ======= Custom Styles ====== -->
     <link rel="stylesheet" href="/css/dashboard.css">
-    <!-- ======= TailwindCSS and DaisyUI ====== -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.3/dist/full.css" rel="stylesheet">
 </head>
 <body>
-    <!-- =============== Navigation ================ -->
     <div class="container1">
         <div class="navigation1">
             <ul>
@@ -74,7 +71,6 @@
                 </li>
             </ul>
         </div>
-        <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
@@ -84,10 +80,8 @@
                     <img src="/images/profile.jpg" alt="">
                 </div>
             </div>
-            <!-- ================ Pendaftaran Section ================= -->
             <div class="details mt-20" id="pendaftaran-section">
                 <h1 class="text-5xl font-semibold mb-8">Pendaftaran Seminar Hasil</h1>
-                <!-- Tabel Daftar Hadir Peserta -->
                 <div class="container mx-auto">
                     <div class="overflow-x-auto">
                         <table class="table w-full bg-gray-100">
@@ -100,10 +94,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each pendaftarans}}
                                 <tr>
-                                    <td class="text-center">Farhan</td>
-                                    <td class="text-center">12345678</td>
-                                    <td class="text-center">Ricky Akbar, M.Kom</td>
+                                    <td class="text-center">{{this.name}}</td>
+                                    <td class="text-center">{{this.nim}}</td>
+                                    <td class="text-center">{{this.dosenPembimbing}}</td>
                                     <td class="text-center">
                                         <button class="btn btn-outline btn-info btn-xs mr-2">
                                             <ion-icon name="create-outline"></ion-icon>
@@ -113,19 +108,7 @@
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="text-center">Ara</td>
-                                    <td class="text-center">87654321</td>
-                                    <td class="text-center">Ricky Akbar, M.Kom</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-outline btn-info btn-xs mr-2">
-                                            <ion-icon name="create-outline"></ion-icon>
-                                        </button>
-                                        <button class="btn btn-outline btn-error btn-xs">
-                                            <ion-icon name="trash-outline"></ion-icon>
-                                        </button>
-                                    </td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
