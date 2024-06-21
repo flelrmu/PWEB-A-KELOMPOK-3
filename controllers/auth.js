@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");  //hashing dan memverifikasi kata sandi.
 const { Users } = require("../models/users.js");
+const fs = require("fs/promises");
+const multer = require("multer");
 
 const Login = async (req, res) => {   //menangani autentikasi pengguna.(menangani HTTP request method)
   try {

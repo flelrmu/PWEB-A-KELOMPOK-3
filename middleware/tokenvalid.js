@@ -34,15 +34,17 @@ function verifyToken(role) {
 
             res.cookie('token', newAccessToken, { httpOnly: true, secure: true });
 
-            req.userId = decodedRefresh.userId;
-            req.userRole = decodedRefresh.role;
+            req.user = {
+              id: decodedRefresh.userId,
+              role: decodedRefresh.role
+            };
 
-            if (role && req.userRole !== role) {
-              if (req.userRole === "mahasiswa") {
+            if (role && req.user.role !== role) {
+              if (req.user.role === "mahasiswa") {
                 return res.redirect("/home");
-              } else if (req.userRole === "admin") {
+              } else if (req.user.role === "admin") {
                 return res.redirect("/admin/dashboard");
-              } else if (req.userRole === "dosen") {
+              } else if (req.user.role === "dosen") {
                 return res.redirect("/dosen/dashboard");
               }
             }
@@ -50,17 +52,20 @@ function verifyToken(role) {
           });
         } else {
           console.log("Access token verification failed:", err);
-          return res.redirect('/login');        }
+          return res.redirect('/login');
+        }
       } else {
-        req.userId = decoded.userId;
-        req.userRole = decoded.role;
+        req.user = {
+          id: decoded.userId,
+          role: decoded.role
+        };
 
-        if (role && req.userRole !== role) {
-          if (req.userRole === "mahasiswa") {
+        if (role && req.user.role !== role) {
+          if (req.user.role === "mahasiswa") {
             return res.redirect("/home");
-          } else if (req.userRole === "admin") {
+          } else if (req.user.role === "admin") {
             return res.redirect("/admin/dashboard");
-          } else if (req.userRole === "dosen") {
+          } else if (req.user.role === "dosen") {
             return res.redirect("/dosen/dashboard");
           }
         }
