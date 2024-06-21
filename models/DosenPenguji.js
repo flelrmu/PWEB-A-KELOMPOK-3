@@ -7,8 +7,8 @@ const DosenPenguji = db.define(
     idDosen: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
-  },
+      autoIncrement: true,
+    },
     nama: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,7 +21,7 @@ const DosenPenguji = db.define(
 );
 
 DosenPenguji.associate = function (models) {
-  DosenPenguji.hasMany(models.DetailRiwayatSeminar, { foreignKey: 'idDosen' });
+  DosenPenguji.hasMany(models.DetailRiwayatSeminar, { foreignKey: "idDosen" });
 };
 
 module.exports = DosenPenguji;

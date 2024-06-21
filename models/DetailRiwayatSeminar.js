@@ -40,21 +40,21 @@ const DetailRiwayatSeminar = db.define(
     id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "Users", // Nama tabel yang dirujuk
+        model: "Users",
         key: "id",
       },
     },
     idJadwal: {
       type: DataTypes.INTEGER,
       references: {
-        model: "Jadwal", // Nama tabel yang dirujuk
+        model: "Jadwal",
         key: "idJadwal",
       },
     },
     idDaftar: {
       type: DataTypes.INTEGER,
       references: {
-        model: "Daftar", // Nama tabel yang dirujuk
+        model: "Daftar",
         key: "idDaftar",
       },
     },
@@ -68,9 +68,10 @@ const DetailRiwayatSeminar = db.define(
 DetailRiwayatSeminar.associate = function (models) {
   DetailRiwayatSeminar.belongsTo(models.Users, { foreignKey: "id" });
   DetailRiwayatSeminar.belongsTo(models.Jadwal, { foreignKey: "idJadwal" });
-  DetailRiwayatSeminar.belongsTo(models.DosenPenguji, { foreignKey: "idDosen" });
+  DetailRiwayatSeminar.belongsTo(models.DosenPenguji, {
+    foreignKey: "idDosen",
+  });
   DetailRiwayatSeminar.belongsTo(models.Daftar, { foreignKey: "idDaftar" });
 };
-
 
 module.exports = DetailRiwayatSeminar;
