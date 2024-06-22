@@ -3,8 +3,6 @@ const bcrypt = require("bcryptjs");
 const { Users } = require("../models/users.js");
 const { Jadwal } = require("../models/jadwal.js");
 const { Daftar } = require("../models/pendaftaran.js");
-const { DetailRiwayatSeminar } = require("../models/DetailRiwayatSeminar.js");
-const { DosenPenguji } = require("../models/DosenPenguji");
 const Seminar = require("../models/seminar");
 const { Op } = require("sequelize");
 const path = require("path");
@@ -12,15 +10,17 @@ const fs = require("fs");
 
 exports.sendForm = async (req, res) => {
   try {
-    const { inputNama, inputNim, inputTopik, inputJudul, inputDospem } = req.body;
+    const { inputNama, inputNim, inputTopik, inputJudul, inputDospem } =
+      req.body;
     const filePath = req.file.path;
     const userId = req.user.id;
 
-    // Cek apakah pengguna sudah memiliki riwayat pendaftaran
     const existingForm = await Daftar.findOne({ where: { id: userId } });
 
     if (existingForm) {
-      return res.status(400).json({ message: "Anda sudah mendaftar untuk seminar ini" });
+      return res
+        .status(400)
+        .json({ message: "Anda sudah mendaftar untuk seminar ini" });
     }
 
     const newForm = await Daftar.create({
@@ -36,7 +36,9 @@ exports.sendForm = async (req, res) => {
     return res.redirect("/lihat/" + newForm.idDaftar);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Terjadi kesalahan saat melakukan pendaftaran" });
+    return res
+      .status(500)
+      .json({ message: "Terjadi kesalahan saat melakukan pendaftaran" });
   }
 };
 
@@ -142,8 +144,7 @@ exports.submitJadwal = async (req, res) => {
 
 exports.getRiwayatSeminar = async (req, res) => {
   try {
-    const riwayat = await Daftar.findByPk(req.params.idDaftar, {
-    });
+    const riwayat = await Daftar.findByPk(req.params.idDaftar, {});
 
     if (!riwayat) {
       return res.status(404).send("Riwayat tidak ditemukan");
