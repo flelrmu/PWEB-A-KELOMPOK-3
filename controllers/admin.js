@@ -19,3 +19,17 @@ exports.pendaftaranSeminar = async (req, res) => {
         res.status(500).json({ message: "Error retrieving pendaftarans" });
     }
 };
+
+exports.deletePendaftaran = async (req, res) => {
+    const id = req.params.id;
+    try {
+    const result = await Pendaftaran.findByIdAndDelete(id);
+    if (!result) {
+        return res.status(404).json({ message: 'Pendaftaran not found' });
+    }
+    res.status(200).json({ message: 'Pendaftaran deleted successfully' });
+    } catch (error) {
+    console.error(`Error deleting pendaftaran with id ${id}:`, error);
+    res.status(500).json({ message: 'Error deleting pendaftaran', error });
+    }
+};

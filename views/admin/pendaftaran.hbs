@@ -95,7 +95,7 @@
                             </thead>
                             <tbody>
                                 {{#each pendaftarans}}
-                                <tr>
+                                <tr data-id="{{this.idDaftar}}">
                                     <td class="text-center">{{this.name}}</td>
                                     <td class="text-center">{{this.nim}}</td>
                                     <td class="text-center">{{this.dosenPembimbing}}</td>
@@ -103,7 +103,7 @@
                                         <button class="btn btn-outline btn-info btn-xs mr-2">
                                             <ion-icon name="create-outline"></ion-icon>
                                         </button>
-                                        <button class="btn btn-outline btn-error btn-xs">
+                                        <button class="btn btn-outline btn-error btn-xs delete-button">
                                             <ion-icon name="trash-outline"></ion-icon>
                                         </button>
                                     </td>
@@ -121,5 +121,40 @@
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- Script untuk delete -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const deleteButtons = document.querySelectorAll('.delete-button');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const row = button.closest('tr');
+                    const id = row.getAttribute('data-id');
+
+                    if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                        fetch(`/admin/pendaftaran/${id}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.message === 'Pendaftaran deleted successfully') {
+                                row.remove();
+                            } else {
+                                alert('Error deleting data');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Error deleting data');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

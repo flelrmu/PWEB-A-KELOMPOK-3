@@ -27,5 +27,6 @@ router.get("/dashboard", verifyToken("admin"), async (req, res) => {
   const user = await getUser(req, res);
   res.render("admin/dashboard", { user });
 });
+router.delete('/pendaftaran/:id', adminController.deletePendaftaran);
 
 module.exports = router;
