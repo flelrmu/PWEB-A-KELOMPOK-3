@@ -130,7 +130,7 @@ exports.submitJadwal = async (req, res) => {
       idDaftar: daftar.idDaftar,
     });
 
-    res.redirect("/riwayat/" + daftar.idDaftar);
+    res.redirect("/lihat/" + daftar.idDaftar);
   } catch (error) {
     console.error(error);
     res.status(500).send("Terjadi kesalahan server");
@@ -140,11 +140,6 @@ exports.submitJadwal = async (req, res) => {
 exports.getRiwayatSeminar = async (req, res) => {
   try {
     const riwayat = await Daftar.findByPk(req.params.idDaftar, {
-      where: {
-        status: {
-          [Op.or]: ["selesai", "ditunda"],
-        },
-      },
     });
 
     if (!riwayat) {

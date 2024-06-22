@@ -64,7 +64,60 @@ router.post(
   users.sendForm
 );
 
-router.get("/lihat/:idDaftar", verifyToken("mahasiswa"), users.getDaftar);
+router.get("/lihat", verifyToken("mahasiswa"), async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const daftar = await Daftar.findOne({ where: { id: userId } });
+
+    if (!daftar) {
+      return res.status(404).send("Pendaftaran tidak ditemukan");
+    }
+
+    res.render("mahasiswa/lihat", {
+      idDaftar: daftar.idDaftar,
+      namaMahasiswa: daftar.name,
+      nimMahasiswa: daftar.nim,
+      topikSeminar: daftar.topik,
+      judul: daftar.judul,
+      dosenPembimbing: daftar.dosenPembimbing,
+      file: daftar.file,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Terjadi kesalahan server");
+  }
+});
+
+router.get("/lihat/:idDaftar?", verifyToken("mahasiswa"), async (req, res) => {
+  try {
+    const idDaftar = req.params.idDaftar;
+    const userId = req.user.id;
+    let pendaftaran;
+
+    if (idDaftar) {
+      pendaftaran = await Daftar.findByPk(idDaftar);
+    } else {
+      pendaftaran = await Daftar.findOne({ where: { id: userId } });
+    }
+
+    if (pendaftaran) {
+      res.render("mahasiswa/lihat", {
+        idDaftar: pendaftaran.idDaftar,
+        namaMahasiswa: pendaftaran.name,
+        nimMahasiswa: pendaftaran.nim,
+        topikSeminar: pendaftaran.topik,
+        judul: pendaftaran.judul,
+        dosenPembimbing: pendaftaran.dosenPembimbing,
+        file: pendaftaran.file,
+      });
+    } else {
+      res.status(404).send("Pendaftaran tidak ditemukan");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Terjadi kesalahan server");
+  }
+});
 
 router.get("/editdaftar/:idDaftar", verifyToken("mahasiswa"), users.editForm);
 
@@ -85,10 +138,69 @@ router.post(
 //   res.render("mahasiswa/detailRiwayat", { user });
 // });
 
+router.get("/riwayat", verifyToken("mahasiswa"), async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const daftar = await Daftar.findOne({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!daftar) {
+      return res.status(404).send("Riwayat tidak ditemukan");
+    }
+
+    res.render("mahasiswa/riwayat", {
+      idDaftar: daftar.idDaftar,
+      namaMahasiswa: daftar.name,
+      nimMahasiswa: daftar.nim,
+      topikSeminar: daftar.topik,
+      judul: daftar.judul,
+      dosenPembimbing: daftar.dosenPembimbing,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Terjadi kesalahan server");
+  }
+});
+
 router.get(
-  "/riwayat/:idDaftar",
+  "/riwayat/:idDaftar?",
   verifyToken("mahasiswa"),
-  users.getRiwayatSeminar
+  async (req, res) => {
+    try {
+      const idDaftar = req.params.idDaftar;
+      const userId = req.user.id;
+      let riwayat;
+
+      if (idDaftar) {
+        riwayat = await Daftar.findByPk(idDaftar);
+      } else {
+        riwayat = await Daftar.findOne({
+          where: {
+            id: userId,
+          },
+        });
+      }
+
+      if (riwayat) {
+        res.render("mahasiswa/riwayat", {
+          idDaftar: riwayat.idDaftar,
+          namaMahasiswa: riwayat.name,
+          nimMahasiswa: riwayat.nim,
+          topikSeminar: riwayat.topik,
+          judul: riwayat.judul,
+          dosenPembimbing: riwayat.dosenPembimbing,
+        });
+      } else {
+        res.status(404).send("Riwayat tidak ditemukan");
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Terjadi kesalahan server");
+    }
+  }
 );
 
 router.get(
