@@ -7,9 +7,9 @@ const Daftar = db.define(
   "daftar",
   {
     idDaftar: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -32,22 +32,21 @@ const Daftar = db.define(
     id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Users', // Nama tabel yang dirujuk
-        key: 'id',
+        model: "Users",
+        key: "id",
       },
     },
   },
   {
     freezeTableName: true,
-    timestamps: false
+    timestamps: false,
   }
 );
 
-// Menambahkan asosiasi
 Daftar.associate = function (models) {
-  Daftar.belongsTo(models.Users, { foreignKey: 'id' });
-  Daftar.hasMany(models.Jadwal, { foreignKey: 'idDaftar' });
-  Daftar.hasMany(models.DetailRiwayatSeminar, { foreignKey: 'idDaftar' });
+  Daftar.belongsTo(models.Users, { foreignKey: "id" });
+  Daftar.hasMany(models.Jadwal, { foreignKey: "idDaftar" });
+  Daftar.hasMany(models.DetailRiwayatSeminar, { foreignKey: "idDaftar" });
 };
 
 module.exports = {

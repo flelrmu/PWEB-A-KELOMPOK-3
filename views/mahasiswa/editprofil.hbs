@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/profile.css" rel="stylesheet" />
-    
+
 </head>
 <style>
     body {
@@ -123,9 +123,9 @@
                             password</a>
                         <a class="list-group-item list-group-item-action" href="/logout"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LogOut</a>
-                                <form id="logout-form" action="/logout" method="DELETE" style="display: none;">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                </form>
+                        <form id="logout-form" action="/logout" method="DELETE" style="display: none;">
+                            <input type="hidden" name="_method" value="DELETE">
+                        </form>
                         <a class="list-group-item list-group-item-action" href="/home">Back</a>
                     </div>
                 </div>
@@ -134,7 +134,8 @@
                         <form method="post" action="/editprofil">
                             <div class="tab-pane fade active show">
                                 <div class="card-body media align-items-center">
-                                    <img src="https://media.licdn.com/dms/image/D5603AQE5wp3q_Z19rA/profile-displayphoto-shrink_400_400/0/1694580875835?e=1721865600&v=beta&t=DQXrjCqaG_Fru-DHGUipDMxc0YCX5QFGyDgi1SFSx9o" alt class="d-block ui-w-80">
+                                    <img src="https://media.licdn.com/dms/image/D5603AQE5wp3q_Z19rA/profile-displayphoto-shrink_400_400/0/1694580875835?e=1721865600&v=beta&t=DQXrjCqaG_Fru-DHGUipDMxc0YCX5QFGyDgi1SFSx9o"
+                                        alt class="d-block ui-w-80">
                                     <div class="media-body ml-4">
                                         <label class="btn btn-outline-primary">
                                             Upload new photo
