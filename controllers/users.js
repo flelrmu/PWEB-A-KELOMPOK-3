@@ -12,10 +12,17 @@ const fs = require("fs");
 
 exports.sendForm = async (req, res) => {
   try {
-    const { inputNama, inputNim, inputTopik, inputJudul, inputDospem } =
-      req.body;
+    const { inputNama, inputNim, inputTopik, inputJudul, inputDospem } = req.body;
     const filePath = req.file.path;
     const userId = req.user.id;
+
+    // Cek apakah pengguna sudah memiliki riwayat pendaftaran
+    const existingForm = await Daftar.findOne({ where: { id: userId } });
+
+    if (existingForm) {
+      return res.status(400).json({ message: "Anda sudah mendaftar untuk seminar ini" });
+    }
+
     const newForm = await Daftar.create({
       name: inputNama,
       nim: inputNim,
@@ -29,11 +36,7 @@ exports.sendForm = async (req, res) => {
     return res.redirect("/lihat/" + newForm.idDaftar);
   } catch (error) {
     console.log(error);
-    return res
-      .status(500)
-      .json({
-        message: "Pendaftaran Sudah dilakukan, Menunggu Verifikasi Dari Dosen",
-      });
+    return res.status(500).json({ message: "Terjadi kesalahan saat melakukan pendaftaran" });
   }
 };
 
