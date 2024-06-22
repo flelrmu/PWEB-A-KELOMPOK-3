@@ -1,25 +1,25 @@
 const jwt = require("jsonwebtoken");
 const { Users } = require("../models/users.js");
 
-const refreshToken = async (req, res) => {   //definisikan fungsi refreshToken sebagai fungsi asinkron.
+const refreshToken = async (req, res) => {
   try {
-    const refreshToken = req.cookies.refreshToken;  //Mengambil refreshToken dari cookie pengguna.
-    if (!refreshToken) return res.sendStatus(401);  //Jika refreshToken tidak ada, mengembalikan status 401 (respon).
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(401);
 
     console.log("Menerima refresh token:", refreshToken);
 
-    const user = await Users.findOne({  //Mencari pengguna di database yang memiliki refresh_token yang sesuai.
+    const user = await Users.findOne({
       where: { refresh_token: refreshToken },
     });
 
     if (!user) {
       console.log("User tidak ditemukan.");
-      return res.sendStatus(403);     //Jika pengguna tidak ditemukan, mengembalikan status 403 atau forbidden.
+      return res.sendStatus(403);
     }
 
     console.log("User ditemukan:", user);
 
-    jwt.verify(            //Memverifikasi refreshToken menggunakan jsonwebtoken dan REFRESH_TOKEN_SECRET.
+    jwt.verify(
       refreshToken,
       process.env.REFRESH_TOKEN_SECRET,
       (err, decoded) => {
@@ -28,24 +28,23 @@ const refreshToken = async (req, res) => {   //definisikan fungsi refreshToken s
           return res.sendStatus(403);
         }
 
-        //Mengambil informasi pengguna dari refreshToken yang sudah terverifikasi.
-        const { userId, name, email, role, nim, hp, departemen } = decoded;  
+        const { userId, name, email, role, nim, hp, departemen } = decoded;
         const newAccessToken = jwt.sign(
           { userId, name, email, role, nim, hp, departemen },
-          process.env.ACCESS_TOKEN_SECRET, //Membuat token akses baru dengan informasi pengguna dan ACCESS_TOKEN_SECRET.
+          process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: "10s", //Mengatur masa berlaku token akses baru.
+            expiresIn: "10s",
           }
         );
 
         console.log("Token akses baru dibuat:", newAccessToken);
 
-        res.json({ accessToken: newAccessToken }); //ini untuk mengirim token akses baru sebagai respon dalam format JSON.
+        res.json({ accessToken: newAccessToken });
       }
     );
-  } catch (error) {  //Menangani kesalahan yang terjadi selama proses refresh token.
+  } catch (error) {
     console.error("Refresh token error:", error);
-    res.status(500).json({ message: "Internal server error" }); //Mengembalikan status 500 jika terjadi kesalahan server.
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
