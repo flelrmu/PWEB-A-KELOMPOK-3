@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/profile.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <style>
     body {
@@ -123,9 +123,9 @@
                             password</a>
                         <a class="list-group-item list-group-item-action" href="/logout"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LogOut</a>
-                                <form id="logout-form" action="/logout" method="DELETE" style="display: none;">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                </form>
+                        <form id="logout-form" action="/logout" method="DELETE" style="display: none;">
+                            <input type="hidden" name="_method" value="DELETE">
+                        </form>
                         <a class="list-group-item list-group-item-action" href="/home">Back</a>
                     </div>
                 </div>
@@ -134,13 +134,14 @@
                         <form method="post" action="/editprofil">
                             <div class="tab-pane fade active show">
                                 <div class="card-body media align-items-center">
-                                    <img src="https://media.licdn.com/dms/image/D5603AQE5wp3q_Z19rA/profile-displayphoto-shrink_400_400/0/1694580875835?e=1721865600&v=beta&t=DQXrjCqaG_Fru-DHGUipDMxc0YCX5QFGyDgi1SFSx9o" alt class="d-block ui-w-80">
+                                    <img src="https://media.licdn.com/dms/image/D5603AQE5wp3q_Z19rA/profile-displayphoto-shrink_400_400/0/1694580875835?e=1721865600&v=beta&t=DQXrjCqaG_Fru-DHGUipDMxc0YCX5QFGyDgi1SFSx9o"
+                                        alt class="d-block ui-w-80">
                                     <div class="media-body ml-4">
                                         <label class="btn btn-outline-primary">
                                             Upload new photo
                                             <input type="file" class="account-settings-fileinput">
                                         </label> &nbsp;
-                                        <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K
+                                        <div class="text-light small mt-1">Allowed JPG or PNG. Max size of 800K
                                         </div>
                                     </div>
                                 </div>
@@ -184,9 +185,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

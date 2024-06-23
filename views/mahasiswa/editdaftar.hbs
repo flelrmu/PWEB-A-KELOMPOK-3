@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Seminar Hasil</title>
+    <script>
+        window.onload = function () {
+            window.scrollTo(0, 0);
+        };
+    </script>
+</head>
+<style>
+    body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .container {
+        background-color: white;
+        padding: 20px 150px;
+        border: 2px solid #3D2618;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 800px;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+
+    .container .daftar {
+        box-shadow: 2px 2px 2px #adadad;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #000000;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        text-align: left;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    input[type="file"] {
+        padding: 5px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    button {
+        padding: 8px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .submit-btn {
+        background-color: #3D2618;
+        color: white;
+    }
+
+    .back-btn {
+        background-color: #ffffff;
+        color: black;
+        box-shadow: 2px 2px 2px #adadad;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Edit Pendaftaran Seminar</h1>
+        <form action="/editdaftar/{{idDaftar}}" method="POST" enctype="multipart/form-data">
+            <label for="nama">Nama</label>
+            <input class="daftar" type="text" id="nama" name="inputNama" value="{{daftar.name}}" required>
+
+            <label for="nim">NIM</label>
+            <input class="daftar" type="text" id="nim" name="inputNim" value="{{daftar.nim}}" required>
+
+            <label for="topik">Topik</label>
+            <input class="daftar" type="text" id="topik" name="inputTopik" value="{{daftar.topik}}" required>
+
+            <label for="judul">Judul</label>
+            <input class="daftar" type="text" id="judul" name="inputJudul" value="{{daftar.judul}}" required>
+
+            <label for="dosen">Dosen Pembimbing</label>
+            <input class="daftar" type="text" id="dosen" name="inputDospem" value="{{daftar.dosenPembimbing}}" required>
+
+            <label for="file">Upload File Presentasi</label>
+            <input class="daftar" type="file" id="file" name="file">
+            <p>File saat ini:
+                {{#if daftar.file}}
+                <a href="/uploads/{{daftar.file}}" target="_blank">Lihat File</a>
+                {{else}}
+                Belum ada file diunggah
+                {{/if}}
+            </p>
+            <div class="buttons">
+                <button type="submit" class="submit-btn">Save</button>
+                <button type="button" class="back-btn" onclick="window.history.back();" href="/lihat">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+
+</html>

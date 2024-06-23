@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendaftaran Seminar Hasil</title>
     <script>
-        // Ensure the page starts at the top when loaded
         window.onload = function () {
             window.scrollTo(0, 0);
         };
@@ -105,21 +104,21 @@
 <body>
     <div class="container">
         <h1>Pendaftaran Seminar Hasil</h1>
-        <form method="POST" action="/daftar">
+        <form method="POST" action="/daftar" enctype="multipart/form-data">
             <label for="nama">Nama</label>
-            <input class="daftar" type="text" id="nama" name="nama" required>
+            <input class="daftar" type="text" id="nama" name="inputNama" required>
 
             <label for="nim">NIM</label>
-            <input class="daftar" type="text" id="nim" name="nim" required>
+            <input class="daftar" type="text" id="nim" name="inputNim" required>
 
             <label for="topik">Topik</label>
-            <input class="daftar" type="text" id="topik" name="topik" required>
+            <input class="daftar" type="text" id="topik" name="inputTopik" required>
 
             <label for="judul">Judul</label>
-            <input class="daftar" type="text" id="judul" name="judul" required>
+            <input class="daftar" type="text" id="judul" name="inputJudul" required>
 
             <label for="dosen">Dosen Pembimbing</label>
-            <input class="daftar" type="text" id="dosen" name="dosen" required>
+            <input class="daftar" type="text" id="dosen" name="inputDospem" required>
 
             <label for="file">Upload File Presentasi</label>
             <input class="daftar" type="file" id="file" name="file" required>
