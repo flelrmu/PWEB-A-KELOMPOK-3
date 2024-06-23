@@ -7,9 +7,10 @@ const verifyToken = require("../middleware/tokenvalid.js");
 router.get('/dashboard', verifyToken("admin"), adminController.dashboard);
 router.get('/pendaftaran', verifyToken("admin"), adminController.pendaftaranSeminar);
 router.get('/jadwal', verifyToken("admin"), (req, res) => {
-    res.render('admin/jadwal');
+  const days = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+  res.render('admin/jadwal', { days });
 });
-
+router.post('/saveJadwal', verifyToken("admin"), adminController.saveJadwal);
 router.get('/daftarhadir', verifyToken("admin"), (req, res) => {
     res.render('admin/daftarhadir');
 });
