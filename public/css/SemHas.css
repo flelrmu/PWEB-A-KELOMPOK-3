@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 60%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    background-color: #5d4037;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    color: white;
+}
+
+.content {
+    display: flex;
+    padding: 20px;
+}
+
+.student-photo {
+    flex: 1;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.student-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.details {
+    flex: 2;
+}
+
+.details p {
+    margin: 10px 0;
+}
+
+.details ol {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #ccc;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #999;
+}
+
+.download-button:hover {
+    background-color: #bbb;
+}

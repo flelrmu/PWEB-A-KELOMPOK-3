@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="/css/dosen.css" rel="stylesheet">
+  <script src="https://unpkg.com/preline/dist/preline.js"></script>
+</head>
+<body>
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-6 py-3 border-b border-gray-200 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">No</th>                                
+                                <th class="px-6 py-3 border-b border-gray-200 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">NIM</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Judul</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Dosen Pembimbing</th>
+                                <th class="px-6 py-3 border-b border-gray-200 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Tanggal Notifikasi</th>
+
+                        </thead>
+                        
+                        <tbody class="striped-rows">
+                            <% notifikasi.forEach((notif, index) => { %>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= index + 1 %></td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= notif.nama %></td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= notif.nim %></td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= notif.judul %></td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= notif.dosen_pembimbing %></td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= notif.createdAt.toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short'}) %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+    <script src="/js/scripts.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
