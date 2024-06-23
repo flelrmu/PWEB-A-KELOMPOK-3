@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEMINAR MAHASISWA</title>
+    <link rel="stylesheet" href="/css/dosen.css">
+    <link rel="stylesheet" href="/css/cekseminar.css">
+</head>
+<body>
+    <div class="container1">
+        <div class="navigation">
+            <div class="navigation1">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="logo-apple"></ion-icon>
+                            </span>
+                            <span class="title">Cek Seminar Hasil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dosen/dashboard">
+                            <span class="icon">
+                                <ion-icon name="home-outline"></ion-icon>
+                            </span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dosen/notifikasi">
+                            <span class="icon">
+                                <ion-icon name="people-outline"></ion-icon>
+                            </span>
+                            <span class="title">Notifikasi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dosen/SemHas">
+                            <span class="icon">
+                                <ion-icon name="chatbubble-outline"></ion-icon>
+                            </span>
+                            <span class="title">Seminar Hasil Mahasiswa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dosen/daftarhadir">
+                            <span class="icon">
+                                <ion-icon name="help-outline"></ion-icon>
+                            </span>
+                            <span class="title">Daftar Hadir</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navigation2">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="settings-outline"></ion-icon>
+                            </span>
+                            <span class="title">Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/login">
+                            <span class="icon">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                            <span class="title">Sign Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <div class="user">
+                    <img src="/images/dosenAra.jpg" alt="">
+                </div>
+                <div class="user-info">
+                    <h3>Dosen</h3>
+                </div>
+            </div>
+            <div class="details" id="dashboard-section">
+                <header class="header">
+                    <h1>Seminar Hasil Mahasiswa</h1>
+                </header>
+                <div class="content">
+                    <div class="student-photo">
+                        <img src="/images/dosenAra.jpg" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="card w-96 bg-neutral text-neutral-content">
+                         <div class="card-body items-center text-center">
+                        <p><strong>Nama Mahasiswa:</strong> {{seminar.namaMahasiswa}}</p>
+                        <p><strong>NIM Mahasiswa:</strong> {{seminar.nimMahasiswa}}</p>
+                        <p><strong>Topik Seminar Hasil:</strong> {{seminar.topikSeminarHasil}}</p>
+                        <p><strong>Judul:</strong> {{seminar.judul}}</p>
+                        <p><strong>Dosen Pembimbing:</strong> {{seminar.dosenPembimbing}}</p>
+                        <p><strong>Dosen Penguji:</strong></p>
+                        <ol>
+                            <li>{{seminar.dosenPenguji1}}</li>
+                            <li>{{seminar.dosenPenguji2}}</li>
+                            <li>{{seminar.dosenPenguji3}}</li>
+                        </ol>
+                        <p>
+                            <strong>Download File Presentasi:</strong>
+                            <a href="{{filePresentasi}}" class="download-button">Download file</a>
+                        </p>
+                        <p><strong>Tanggal Pengajuan Seminar Hasil:</strong> {{seminar.tanggalPengajuan}}</p>
+                        <p><strong>Tanggal Sidang Seminar Hasil:</strong> {{seminar.tanggalSidang}}</p>
+                          <div class="card-actions justify-end">
+                         <button class="btn btn-primary">Accept</button>
+                            <button class="btn btn-ghost">Deny</button>
+                        </div>
+                        </div>
+                        </div> 
+                    </div>
+                    </div>
+                </div>
+                <div id="content"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/scripts.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
