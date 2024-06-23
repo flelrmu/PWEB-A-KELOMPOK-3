@@ -24,6 +24,11 @@ router.get("/profile", verifyToken("mahasiswa"), async function (req, res) {
   res.render("mahasiswa/profile", { user });
 });
 
+router.get("/daftarhadir", verifyToken("mahasiswa"), async function (req, res) {
+  const user = await getUser(req, res);
+  res.render("mahasiswa/daftarhadir", { user });
+});
+
 router.get(
   "/profile/ubahpassword",
   verifyToken("mahasiswa"),
