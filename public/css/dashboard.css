@@ -208,13 +208,57 @@ h1 {
   height: 290px;
   border-radius: 20px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items to the top */
-  padding-top: 20px; /* Adjust the top padding as needed */
+  flex-direction: column;
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
   color: white;
   font-size: 20px;
   font-weight: bold;
   margin: 20px 0; /* Increase margin to create more space between boxes */
+  text-align: center; /* Center text horizontally */
+}
+
+.box #count {
+  font-size: 120px; /* Increase font size for the count */
+  font-weight: bold; /* Bold font weight for the count */
+  margin-top: 20px; /* Margin to separate count from the text above */
+}
+
+/* dashboard.css */
+.jadwal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.day-box {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 15px;
+  width: calc(33.333% - 40px);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.day-box h2 {
+  margin-bottom: 10px;
+}
+
+.session {
+  background-color: #dcdcdc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.save-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* ====================== Responsive Design ========================== */

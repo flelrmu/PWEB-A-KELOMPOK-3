@@ -5,13 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
-    <!-- ======= Styles ====== -->
+    <title>DASHBOARD ADMIN</title>
     <link rel="stylesheet" href="/css/dashboard.css">
 </head>
-
 <body>
-    <!-- =============== Navigation ================ -->
     <div class="container1">
         <div class="navigation1">
             <ul>
@@ -23,43 +20,38 @@
                         <span class="title">Seminar Hasil</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="#">
+                    <a href="/admin/dashboard">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="#">
+                    <a href="/admin/jadwal">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
                         <span class="title">Jadwal</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="#">
+                    <a href="/admin/pendaftaran">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
                         <span class="title">Pendaftaran</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="#">
+                    <a href="/admin/daftarhadir">
                         <span class="icon">
                             <ion-icon name="help-outline"></ion-icon>
                         </span>
                         <span class="title">Daftar Hadir</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -68,7 +60,6 @@
                         <span class="title">Settings</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="/login">
                         <span class="icon">
@@ -79,35 +70,33 @@
                 </li>
             </ul>
         </div>
-
-        <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
                 <div class="user">
                     <img src="/images/profile.jpg" alt="">
                 </div>
             </div>
-
-            <!-- ================ Order Details List ================= -->
-            <div class="details">
+            <div class="details" id="dashboard-section">
                 <h1>Dashboard</h1>
                 <div class="pendaftar">
-                    <div class="box">Pendaftar Seminar Hasil</div>
-                    <div class="box">Permintaan Perubahan Jadwal</div>
+                    <div class="box" id="pendaftar-box">
+                    <div>Pendaftar Seminar Hasil</div>
+                    <div id="count">{{count}}</div>
+                    </div>
+                    <div class="box" id="pendaftar-box">
+                    <div>Permintaan Perubahan Jadwal</div>
+                    <div id="count">{{count}}</div>
                 </div>
             </div>
-            
-            
-    <!-- =========== Scripts =========  -->
+            <div id="content"></div>
+        </div>
+    </div>
     <script src="/js/scripts.js"></script>
-
-    <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>
+
