@@ -133,15 +133,6 @@ router.post(
   users.editDaftar
 );
 
-// router.get("/riwayat", verifyToken("mahasiswa"), async function (req, res) {
-//   const user = await getUser(req, res);
-//   res.render("mahasiswa/riwayat", { user });
-// });
-
-// router.get("/detailRiwayat", users.getRiwayatSeminar, verifyToken("mahasiswa"), async function (req, res) {
-//   const user = await getUser(req, res);
-//   res.render("mahasiswa/detailRiwayat", { user });
-// });
 
 router.get("/riwayat", verifyToken("mahasiswa"), async (req, res) => {
   try {
