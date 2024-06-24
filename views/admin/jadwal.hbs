@@ -5,14 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DASHBOARD ADMIN</title>
-    <!-- ======= Custom Styles ====== -->
     <link rel="stylesheet" href="/css/dashboard.css">
-    <!-- ======= TailwindCSS and DaisyUI ====== -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.3/dist/full.css" rel="stylesheet">
 </head>
 <body>
-    <!-- =============== Navigation ================ -->
     <div class="container1">
         <div class="navigation1">
             <ul>
@@ -74,7 +71,6 @@
                 </li>
             </ul>
         </div>
-        <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
@@ -84,48 +80,47 @@
                     <img src="/images/profile.jpg" alt="">
                 </div>
             </div>
-            <!-- ================ Dashboard Section ================= -->
             <div class="details" id="dashboard-section">
                 <h1 class="text-5xl font-semibold mb-8">Jadwal Seminar Hasil Tiap Minggu</h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
-                        <h2 class="text-2xl font-semibold mb-4">Senin</h2>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_start"></p>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_end"></p>
+                <form action="/admin/saveJadwal" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
+                            <h2 class="text-2xl font-semibold mb-4">Senin</h2>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Senin_start1"></p>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Senin_start2"></p>
+                        </div>
+                        <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
+                            <h2 class="text-2xl font-semibold mb-4">Selasa</h2>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Selasa_start1"></p>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Selasa_start2"></p>
+                        </div>
+                        <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
+                            <h2 class="text-2xl font-semibold mb-4">Rabu</h2>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Rabu_start1"></p>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Rabu_start2"></p>
+                        </div>
+                        <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
+                            <h2 class="text-2xl font-semibold mb-4">Kamis</h2>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Kamis_start1"></p>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Kamis_start2"></p>
+                        </div>
+                        <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
+                            <h2 class="text-2xl font-semibold mb-4">Jumat</h2>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Jumat_start1"></p>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Jumat_start2"></p>
+                        </div>
+                        <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
+                            <h2 class="text-2xl font-semibold mb-4">Sabtu</h2>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Sabtu_start1"></p>
+                            <p class="text-lg mb-4">Pukul<input type="time" name="Sabtu_start2"></p>
+                        </div>
                     </div>
-                    <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
-                        <h2 class="text-2xl font-semibold mb-4">Tuesday</h2>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_start"></p>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_end"></p>
-                    </div>
-                    <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
-                        <h2 class="text-2xl font-semibold mb-4">Wednesday</h2>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_start"></p>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_end"></p>
-                    </div>
-                    <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
-                        <h2 class="text-2xl font-semibold mb-4">Thursday</h2>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_start"></p>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_end"></p>
-                    </div>
-                    <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
-                        <h2 class="text-2xl font-semibold mb-4">Friday</h2>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_start"></p>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_end"></p>
-                    </div>
-                    <div class="card bg-base-400 p-10 shadow-lg w-full h-full lg:w-96 lg:h-72">
-                        <h2 class="text-2xl font-semibold mb-4">Saturday</h2>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_start"></p>
-                        <p class="text-lg mb-4">Pukul<input type="time" name="senin_end"></p>
-                    </div>
-                </div>
-                <button class="btn btn-outline btn-success mt-8">Simpan</button>
+                    <button class="btn btn-outline btn-success mt-8" type="submit">Simpan</button>
+                </form>
             </div>
         </div>
     </div>
-    <!-- =========== Scripts =========  -->
     <script src="/js/scripts.js"></script>
-    <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
