@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Seminar Hasil</title>
+    <title>Daftar Hadir Seminar Hasil</title>
     <script>
+        // Ensure the page starts at the top when loaded
         window.onload = function () {
             window.scrollTo(0, 0);
         };
@@ -99,50 +100,32 @@
     button:hover {
         opacity: 0.9;
     }
-
-    @media (max-width: 600px) {
-        .container {
-            padding: 20px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .buttons {
-            flex-direction: column;
-            padding-left: 0;
-            padding-right: 0;
-        }
-    }
 </style>
 
 <body>
     <div class="container">
-        <h1>Pendaftaran Seminar Hasil</h1>
-        <form method="POST" action="/daftar" enctype="multipart/form-data">
+        <h1>Daftar Hadir Seminar Hasil</h1>
+        <form method="POST" action="/daftar">
             <label for="nama">Nama</label>
-            <input class="daftar" type="text" id="nama" name="inputNama" required>
+            <input class="daftar" type="text" id="nama" name="nama" required>
 
             <label for="nim">NIM</label>
-            <input class="daftar" type="text" id="nim" name="inputNim" required>
+            <input class="daftar" type="text" id="nim" name="nim" required>
 
-            <label for="topik">Topik</label>
-            <input class="daftar" type="text" id="topik" name="inputTopik" required>
+            <label for="tanggal">tanggal</label>
+            <input class="daftar" type="text" id="tanggal" name="tanggal" required>
 
-            <label for="judul">Judul</label>
-            <input class="daftar" type="text" id="judul" name="inputJudul" required>
-
-            <label for="dosen">Dosen Pembimbing</label>
-            <input class="daftar" type="text" id="dosen" name="inputDospem" required>
-
-            <label for="file">Upload File Presentasi</label>
-            <input class="daftar" type="file" id="file" name="file" required>
+            <label for="topik">Topik Seminar Hasil</label>
+            <input class="daftar" type="text" id="topik" name="topik" required>
 
             <div class="buttons">
                 <button type="submit" class="submit-btn">Submit</button>
-                <button type="button" class="back-btn" onclick="window.history.back();" href="/home">Back</button>
+                <button type="button" class="next-btn" onclick="window.history.back();" href="/evaluasi">Back</button>
             </div>
         </form>
     </div>
+      <script src="/js/scripts.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>

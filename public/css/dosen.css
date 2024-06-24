@@ -25,103 +25,79 @@ body {
   width: 100%;
 }
 
-.navigation1 {
+.navigation {
   position: fixed;
   width: 300px;
   height: 100%;
   background: var(--blue);
   border-left: 10px solid var(--blue);
+  display: flex;
+  flex-direction: column;
   transition: 0.5s;
 }
-.navigation1.active {
-  width: 80px;
+
+.navigation1 {
+  flex: 1;
+  overflow-y: auto;
 }
 
-.navigation1 ul {
-  position: absolute;
-  top: 0;
-  left: 0;
+.navigation2 {
+  margin-top: auto;
+}
+
+.navigation1 ul,
+.navigation2 ul {
   width: 100%;
 }
 
-.navigation1 ul li {
-  position: relative;
-  width: 100%;
+.navigation1 ul li,
+.navigation2 ul li {
   list-style: none;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
 
 .navigation1 ul li:hover,
-.navigation1 ul li.hovered {
+.navigation1 ul li.hovered,
+.navigation2 ul li:hover,
+.navigation2 ul li.hovered {
   background-color: var(--white);
 }
 
-.navigation1 ul li:nth-child(1) {
-  margin-bottom: 40px;
-  pointer-events: none;
-}
-
-.navigation1 ul li a {
-  position: relative;
-  display: block;
-  width: 100%;
+.navigation1 ul li a,
+.navigation2 ul li a {
   display: flex;
+  align-items: center;
   text-decoration: none;
   color: var(--white);
+  padding: 0 10px;
 }
+
 .navigation1 ul li:hover a,
-.navigation1 ul li.hovered a {
+.navigation1 ul li.hovered a,
+.navigation2 ul li:hover a,
+.navigation2 ul li.hovered a {
   color: var(--blue);
 }
 
-.navigation1 ul li a .icon {
-  position: relative;
-  display: block;
-  min-width: 60px;
+.navigation1 ul li a .icon,
+.navigation2 ul li a .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
   height: 60px;
-  line-height: 75px;
-  text-align: center;
 }
-.navigation1 ul li a .icon ion-icon {
+
+.navigation1 ul li a .icon ion-icon,
+.navigation2 ul li a .icon ion-icon {
   font-size: 1.75rem;
 }
 
-.navigation1 ul li a .title {
-  position: relative;
-  display: block;
-  padding: 0 10px;
-  height: 60px;
-  line-height: 60px;
-  text-align: start;
-  white-space: nowrap;
-}
-
-.navigation1 ul li:hover a::before,
-.navigation1 ul li.hovered a::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: -50px;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-  border-radius: 50%;
-  box-shadow: 35px 35px 0 10px var(--white);
-  pointer-events: none;
-}
-.navigation1 ul li:hover a::after,
-.navigation1 ul li.hovered a::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -50px;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-  border-radius: 50%;
-  box-shadow: 35px -35px 0 10px var(--white);
-  pointer-events: none;
+.navigation1 ul li a .title,
+.navigation2 ul li a .title {
+  flex-grow: 1;
+  padding-left: 10px;
 }
 
 .main {
@@ -142,7 +118,7 @@ body {
   height: 60px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
   padding: 0 10px;
 }
 
@@ -173,6 +149,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.user-info{
+  display: flex;
+  
 }
 
 .details {
@@ -217,7 +198,6 @@ h1 {
   font-weight: bold;
   margin-top: 20px;
 }
-
 .jadwal {
   display: flex;
   flex-wrap: wrap;
@@ -305,8 +285,67 @@ h1 {
     right: 0;
     left: initial;
   }
-<<<<<<< HEAD
 }
-=======
+
+/* Custom CSS for accordion icons and notification */
+.hs-accordion-toggle svg {
+  transition: transform 0.3s ease;
 }
->>>>>>> 62678e862dc85f27b94148cf45a9c3d0deda0b51
+
+.hs-accordion.active .hs-accordion-toggle svg:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hs-accordion.active .hs-accordion-toggle svg:nth-child(2) {
+  transform: rotate(0deg);
+}
+
+.hs-accordion .hs-accordion-toggle svg:nth-child(2) {
+  transform: rotate(90deg);
+}
+
+/* Preline notification styles */
+.notification {
+  position: relative;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.notification-success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.notification-error {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+.notification-warning {
+  background-color: #fff3cd;
+  color: #664d03;
+  border: 1px solid #ffecb5;
+}
+
+.notification-info {
+  background-color: #cff4fc;
+  color: #055160;
+  border: 1px solid #b6effb;
+}
+
+.notification .close {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.notification .close svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}

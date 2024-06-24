@@ -1,0 +1,62 @@
+
+.hs-accordion-toggle svg {
+    transition: transform 0.3s ease;
+}
+
+.hs-accordion.active .hs-accordion-toggle svg:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.hs-accordion.active .hs-accordion-toggle svg:nth-child(2) {
+    transform: rotate(0deg);
+}
+
+.hs-accordion .hs-accordion-toggle svg:nth-child(2) {
+    transform: rotate(90deg);
+}
+
+/* Preline notification styles */
+.notification {
+    position: relative;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.notification-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+
+.notification-error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+
+.notification-warning {
+    background-color: #fff3cd;
+    color: #664d03;
+    border: 1px solid #ffecb5;
+}
+
+.notification-info {
+    background-color: #cff4fc;
+    color: #055160;
+    border: 1px solid #b6effb;
+}
+
+.notification .close {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.notification .close svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}

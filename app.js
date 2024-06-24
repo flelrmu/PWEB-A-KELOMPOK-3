@@ -1,4 +1,5 @@
 var express = require("express");
+const db = require('./config/db.js');
 const path = require("path");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -43,6 +44,17 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+const mysqlHost = process.env.MYSQL_ADDON_HOST || 'bjnbjumbl3x9qgpvunrg-mysql.services.clever-cloud.com';
+const mysqlDb = process.env.MYSQL_ADDON_DB || 'bjnbjumbl3x9qgpvunrg';
+const mysqlUser = process.env.MYSQL_ADDON_USER || 'ujdjfr5hlddkjj5c';
+const mysqlPort = process.env.MYSQL_ADDON_PORT || 3306;
+const mysqlPassword = process.env.MYSQL_ADDON_PASSWORD || 'HOUwjyZxLlv4oel0pY0n';
+const mysqlUri = process.env.MYSQL_ADDON_URI || 'mysql://ujdjfr5hlddkjj5c:HOUwjyZxLlv4oel0pY0n@bjnbjumbl3x9qgpvunrg-mysql.services.clever-cloud.com:3306/bjnbjumbl3x9qgpvunrg';
+
+const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'semhas';
+const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET || 'hassem';
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

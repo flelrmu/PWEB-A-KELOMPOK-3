@@ -24,6 +24,11 @@ router.get("/profile", verifyToken("mahasiswa"), async function (req, res) {
   res.render("mahasiswa/profile", { user });
 });
 
+router.get("/daftarhadir", verifyToken("mahasiswa"), async function (req, res) {
+  const user = await getUser(req, res);
+  res.render("mahasiswa/daftarhadir", { user });
+});
+
 router.get(
   "/profile/ubahpassword",
   verifyToken("mahasiswa"),
@@ -128,15 +133,6 @@ router.post(
   users.editDaftar
 );
 
-// router.get("/riwayat", verifyToken("mahasiswa"), async function (req, res) {
-//   const user = await getUser(req, res);
-//   res.render("mahasiswa/riwayat", { user });
-// });
-
-// router.get("/detailRiwayat", users.getRiwayatSeminar, verifyToken("mahasiswa"), async function (req, res) {
-//   const user = await getUser(req, res);
-//   res.render("mahasiswa/detailRiwayat", { user });
-// });
 
 router.get("/riwayat", verifyToken("mahasiswa"), async (req, res) => {
   try {
